@@ -8,6 +8,9 @@ speechrecognition = "*"
 pynput = "*"
 pyaudio = "*"
 gtts = "*"
+nltk = "*"
+gensim = "*"
+numpy = "*"
 
 [dev-packages]
 
