@@ -2,7 +2,7 @@
 ## ( We are currently under development Group 2)
 
 
-[![N|Development](statics/img/developmentLogo.png)]()
+[![N|Development](statics/img/BlitzWar.png)]()
  
  ## Objective
 - To make a system for blind, handicap students which will be easy to handle and accessible.
