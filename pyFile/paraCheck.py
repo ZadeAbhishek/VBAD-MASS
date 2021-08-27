@@ -1,3 +1,6 @@
+## This folder is to check the similarity betwen the the teacher and student answer code works not upto point
+# need corrections
+
 import nltk 
 nltk.download('punkt')
 from nltk.tokenize import sent_tokenize
