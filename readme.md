@@ -1,7 +1,6 @@
 # Voice Based Answer Evaluation Using NLP and ML
 ## ( We are currently under development Group 2)
 
-
 [![N|Development](statics/img/BlitzWar.png)]()
  
  ## Objective
@@ -15,7 +14,7 @@
 - Speech to text implemented (Not proper but working)
 - Text to speech (We are able to save mp3 file of recorded text)
 
-## Mile Stone
+## Mile Stone (Phase 1 50%)
 - Grammer checking
 - Sentence similarity checking
 - keyWord similarity checking
