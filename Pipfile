@@ -9,8 +9,11 @@ pynput = "*"
 pyaudio = "*"
 gtts = "*"
 nltk = "*"
-gensim = "*"
+gensim = "==3.8.3"
 numpy = "*"
+pandas = "*"
+cdifflib = "*"
+rake-nltk = "*"
 
 [dev-packages]
 

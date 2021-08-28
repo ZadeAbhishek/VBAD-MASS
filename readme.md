@@ -26,6 +26,7 @@ This is was previouly tested on Fedora OS. This steps are according to Fedora or
 For windows and MaxOS may varry
 ```sh
 pip install pipenv
+pipenv shell
 pipenv install
 pipenv run python init.py
 ```

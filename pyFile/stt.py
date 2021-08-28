@@ -10,10 +10,12 @@ val = 'start'
 
 
 def Convertwrite(source):
+    print('calling source.........')
     recognizer = sr.Recognizer()
     global textArray
     recognizer.adjust_for_ambient_noise(source, duration=0.5)
     audio = recognizer.listen(source,10,60)
+    print('speak...................')
     textArray = '' + (recognizer.recognize_google(audio))
     textArray += ' '
     print(textArray)
