@@ -54,3 +54,4 @@ def checkparaSimilarity(studentAnswer, teacherAnswer):
     print(sum_of_similarity)
     percetage_similairty = round(float((sum_of_similarity / len(fileDocument))* 100))
     print('percentage: {}'.format(percetage_similairty))
+    return percetage_similairty

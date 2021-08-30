@@ -5,8 +5,8 @@ from nltk.tokenize import word_tokenize
 from nltk.tokenize.treebank import TreebankWordDetokenizer
 
 
-test = "The git pull command is used to fetch and download content from a remote repository and "
-testKeywords = "git pull command fetch remote repository Merge remote upstream commit"
+# test = "The Samsung Tablets have a one year warranty. If it is only two months old then it should still be covered under the factory warranty. Fortunately, I have yet to run into any issues with my two S6 Lite tablets. That I got in November 2020. "
+# testKeywords = "git pull command fetch remote repository Merge remote upstream commit"
  
 # here test = Student Answer 
 # testKeywords = teachers Keywords 
@@ -49,7 +49,8 @@ def checkKeyword(test,testKeywords):
       return average
 
    count = compare(keyword_extracted,testKeywords)
-   count = (count/testKeywordslen)*100 
+   count = ((count/testKeywordslen)*100)
    print(count)
+   return count/2
 
-checkKeyword(test,testKeywords)
+# checkKeyword(test,testKeywords)

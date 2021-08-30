@@ -14,6 +14,7 @@ numpy = "*"
 pandas = "*"
 cdifflib = "*"
 rake-nltk = "*"
+gingerit = "*"
 
 [dev-packages]
 
