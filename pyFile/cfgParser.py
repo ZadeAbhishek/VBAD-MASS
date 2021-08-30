@@ -3,9 +3,9 @@ from nltk.tokenize import sent_tokenize
 from nltk.tokenize import word_tokenize
 from paraCheck import checkparaSimilarity
 from nltk.corpus import stopwords 
+
+
 # text = ''' was delighted to read you're letter last week. Its always a pleasure to recieve the latest news and to here that you and your family had a great summer. We spent last week at the beach and had so much fun on the sand and in the water exploring the coast we weren't prepared for the rains that came at the end of the vacation. The best parts of the trip was the opportunities to sightsee and relax. My kids are back in school to. I find their are less things to worry about now that the kids are at school all day. There is plenty of fun things to do in the summer, but by August, I've running out of ideas. I've excepted the fact that we'll have to think up brand new activities next summer; hoping to round up some creative ideas soon.'''
-
-
 
 averageScore = 0
 sentencesLenght = 0

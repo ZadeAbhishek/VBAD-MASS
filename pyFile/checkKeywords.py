@@ -5,16 +5,14 @@ from nltk.tokenize import word_tokenize
 from nltk.tokenize.treebank import TreebankWordDetokenizer
 
 
-# test = "The Samsung Tablets have a one year warranty. If it is only two months old then it should still be covered under the factory warranty. Fortunately, I have yet to run into any issues with my two S6 Lite tablets. That I got in November 2020. "
-# testKeywords = "git pull command fetch remote repository Merge remote upstream commit"
- 
+
 # here test = Student Answer 
 # testKeywords = teachers Keywords 
 
 # Function to check keywords
 def checkKeyword(test,testKeywords):
 
-   print("..........................Extracting keyowrds...................................")
+   print("..........................Extracting keyowords...................................")
    testKeywords = testKeywords.lower()
    test = test.lower()
    # This will reduce the lines for example the if there is 10 line 
@@ -29,9 +27,9 @@ def checkKeyword(test,testKeywords):
    keyword_extracted = TreebankWordDetokenizer().detokenize(keyword_extracted)
    # Complete seperating and tokenizing the key word
    keyword_extracted = word_tokenize(keyword_extracted)
-   print(keyword_extracted)
+   #print(keyword_extracted)
    testKeywords = word_tokenize(testKeywords)
-   print(testKeywords)
+   #print(testKeywords)
    # Getting lenght
    testKeywordslen = len(testKeywords)
 
@@ -42,15 +40,48 @@ def checkKeyword(test,testKeywords):
 
    def compare(Studentkeyword,teacherkeyword):
       average = 0
+      elemfound = []
       for twords in range(len(teacherkeyword)) :
           for swords in range(len(Studentkeyword)):
-              if (SequenceMatcher(None,teacherkeyword[twords],Studentkeyword[swords]).ratio()) > 0.8: 
+              if (SequenceMatcher(None,teacherkeyword[twords],Studentkeyword[swords]).ratio()) > 0.8:
+                 elemfound.append(Studentkeyword[swords]) 
+                 #print('Found : {}'.format(Studentkeyword[swords]))
                  average += 1
-      return average
+      elemfound = list(dict.fromkeys(elemfound))
+      elemfound = len(elemfound) 
+      #print(elemfound)
+      #print(testKeywordslen)
+      if(elemfound == 0):
+         return 0
+      if(elemfound == testKeywordslen):
+         return 100
+      return ((elemfound)/(average))*100
 
    count = compare(keyword_extracted,testKeywords)
-   count = ((count/testKeywordslen)*100)
    print(count)
-   return count/2
+   return count
 
-# checkKeyword(test,testKeywords)
+
+
+###### Unit test for This folder  ########
+
+
+test3 = """Git is very fast and scalable compared to other version control systems.
+The fetching power from a local repository is much faster than what possible with remote server.
+Data Assurance
+ The Git history is stored in such a way that the ID of a particular version depends upon the complete development history leading up to that commit.
+Once published, it is not possible to change the old versions without it being noticed.
+Automatic Garbage Collection
+ Git automatically performs garbage collection when enough loose objects have been created in the repository.
+Garbage collection can be called explicitly using git gc –prune.
+Periodic explicit object packing
+ Git stores each newly created object as a separate file. It uses packs that store a large number of objects in a single file (or network byte stream) called packfile, delta-compressed among themselves.
+A corresponding index file is created for each pack file, specifying the offset of each object in the packfile.
+The process of packing can be very expensive computationally.
+Git allows the expensive pack operation to be deferred until later when time does not matter.
+Git does periodic repacking automatically but manual repacking can be done with the git gc command.
+How GIT Works"""
+#test = "git pull command fetch remote repository Merge remote upstream"
+#testKeywords = "git pull command fetch remote repository Merge upstream"
+
+#checkKeyword(test3,testKeywords)

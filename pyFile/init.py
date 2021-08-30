@@ -11,7 +11,7 @@ from cfgParser import checkGrammer
 
 # Conside this as teachers data
 teachersAnswers = "The git pull command is used to fetch and download content from a remote repository and immediately update the local repository to match that content. Merging remote upstream changes into your local repository is a common task in Git-based collaboration work flows. The git pull command is actually a combination of two other commands, git fetch followed by git merge. In the first stage of operation git pull will execute a git fetch scoped to the local branch that HEAD is pointed at. Once the content is downloaded, git pull will enter a merge workflow. A new merge commit will be-created and HEAD updated to point at the new commit."
-teacherKeyword = "git pull command fetch remote repository Merging remote upstream commit" 
+teacherKeyword = "git pull command fetch remote repository Merging upstream commit" 
 # consider this as Student data
 # Know we are listnig the student 
 value = listenkey()
@@ -23,7 +23,7 @@ tts(value, name)
 print('saved.......')
 
 # Checking the similarity between the Student and teacher Answer (Presprocessing is not working)
-similarAnswer = checkparaSimilarity(value,teachersAnswers)
+similarAnswer = checkparaSimilarity(teachersAnswers,value)
 
 # Know preprocessing the text of Student and teacher (For teacher this is still debetable to consider the preprocessing)
 # But for know we are preprocesing the both
