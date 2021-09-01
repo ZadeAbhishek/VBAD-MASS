@@ -43,12 +43,15 @@ def checkKeyword(test,testKeywords):
       elemfound = []
       for twords in range(len(teacherkeyword)) :
           for swords in range(len(Studentkeyword)):
-              if (SequenceMatcher(None,teacherkeyword[twords],Studentkeyword[swords]).ratio()) > 0.8:
+              if (SequenceMatcher(None,teacherkeyword[twords],Studentkeyword[swords]).ratio()) > 0.95:
                  elemfound.append(Studentkeyword[swords]) 
                  #print('Found : {}'.format(Studentkeyword[swords]))
                  average += 1
       elemfound = list(dict.fromkeys(elemfound))
-      elemfound = len(elemfound) 
+      print(elemfound)
+      elemfound = len(elemfound)
+      print(elemfound)
+      print(average) 
       #print(elemfound)
       #print(testKeywordslen)
       if(elemfound == 0):
@@ -81,7 +84,9 @@ The process of packing can be very expensive computationally.
 Git allows the expensive pack operation to be deferred until later when time does not matter.
 Git does periodic repacking automatically but manual repacking can be done with the git gc command.
 How GIT Works"""
-#test = "git pull command fetch remote repository Merge remote upstream"
-#testKeywords = "git pull command fetch remote repository Merge upstream"
+test5 = 'git fast scalable compared version control system facing power local repository much faster possible remote server data assurance git history stored way particular version depends upon complete development history leading automation garbage collection get automatically performs garbage collection enough loses object created repository periodic explain packaged stories new create object separate file packet discover data large number object stream file called packet file'
 
-#checkKeyword(test3,testKeywords)
+#test = "git pull command fetch remote repository Merge remote upstream"
+testKeywords = "git pull command fetch remote repository Merge upstream"
+
+#checkKeyword(test5,testKeywords)

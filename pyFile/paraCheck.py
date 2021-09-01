@@ -7,6 +7,7 @@ from nltk.tokenize import sent_tokenize
 from nltk.tokenize import word_tokenize
 import gensim
 import numpy as np 
+from nltk.corpus import stopwords 
 
 # genism help to create bag of word
 def checkparaSimilarity(studentAnswer, teacherAnswer):
@@ -51,13 +52,34 @@ def checkparaSimilarity(studentAnswer, teacherAnswer):
 
     teacher_word_tf = tf_idf[teacher_word_bow]
     sum_of_similarity = (np.sum(similarity[teacher_word_tf], dtype=np.float32))
-    print(sum_of_similarity)
+    #print(sum_of_similarity)
     #print(len(fileDocument))
     percetage_similairty = round(float((sum_of_similarity / len(fileDocument))* 100))
     print('percentage: {}'.format(percetage_similairty))
     return percetage_similairty
 
 
+def similarity(teacher,student):
+        X_list = word_tokenize(teacher)  
+        Y_list = word_tokenize(student)
+        sw = stopwords.words('english')  
+        l1 =[];l2 =[]
+        X_set = {w for w in X_list if not w in sw}  
+        Y_set = {w for w in Y_list if not w in sw} 
+    
+        rvector = X_set.union(Y_set)  
+        for w in rvector: 
+          if w in X_set: l1.append(1)
+          else: l1.append(0) 
+          if w in Y_set: l2.append(1) 
+          else: l2.append(0) 
+        c = 0
+    
+        for i in range(len(rvector)): 
+          c+= l1[i]*l2[i] 
+        cosine = c / float((sum(l1)*sum(l2))**0.5) 
+        print("similarity: ", cosine * 100)
+        return cosine * 100
 
 
 
@@ -137,6 +159,8 @@ Git allows the expensive pack operation to be deferred until later when time doe
 Git does periodic repacking automatically but manual repacking can be done with the git gc command.
 How GIT Works"""
 
-#teachetTestAnswer = "The git pull command is used to fetch and download content from a remote repository and immediately update the local repository to match that content. Merging remote upstream changes into your local repository is a common task in Git-based collaboration work flows. The git pull command is actually a combination of two other commands, git fetch followed by git merge. In the first stage of operation git pull will execute a git fetch scoped to the local branch that HEAD is pointed at. Once the content is downloaded, git pull will enter a merge workflow. A new merge commit will be-created and HEAD updated to point at the new commit."
-#test4 = "algorithm is a finite set of instructions that I followed accomplished a particular algorithm must satisfy the following criteria input zero for more quality rx10 be supplied output at least one qualities for seed definition if each instruction is clear and ambitious fitness if stress out the construction of an algorithm that all cases the algorithm terminate after the Infinity of step very every instruction must be very busy so that it can be carried out in the principal by the person using one pencil and the paper is not enough that each operation must be defined as a Priority write three it also must be visible ."
-#checkparaSimilarity(teachetTestAnswer,test4)
+teachetTestAnswer = "The git pull command is used to fetch and download content from a remote repository and immediately update the local repository to match that content. Merging remote upstream changes into your local repository is a common task in Git-based collaboration work flows. The git pull command is actually a combination of two other commands, git fetch followed by git merge. In the first stage of operation git pull will execute a git fetch scoped to the local branch that HEAD is pointed at. Once the content is downloaded, git pull will enter a merge workflow. A new merge commit will be-created and HEAD updated to point at the new commit."
+test4 = "algorithm is a finite set of instructions that I followed accomplished a particular algorithm must satisfy the following criteria input zero for more quality rx10 be supplied output at least one qualities for seed definition if each instruction is clear and ambitious fitness if stress out the construction of an algorithm that all cases the algorithm terminate after the Infinity of step very every instruction must be very busy so that it can be carried out in the principal by the person using one pencil and the paper is not enough that each operation must be defined as a Priority write three it also must be visible ."
+
+#checkparaSimilarity(teachetTestAnswer,teachetTestAnswer)
+#similarity(teachetTestAnswer,teachetTestAnswer)
