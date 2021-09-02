@@ -13,11 +13,14 @@
 ## Thing Done 
 - Speech to text implemented (Not proper but working)
 - Text to speech (We are able to save mp3 file of recorded text)
+- Grammer checking
+
+
+
+- keyWord similarity checking
 
 ## Mile Stone (Phase 1 50%)
-- Grammer checking
-- Sentence similarity checking
-- keyWord similarity checking
+
 - ChatBot (++feature)
 - Documentation
 
