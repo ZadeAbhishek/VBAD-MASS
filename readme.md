@@ -1,4 +1,4 @@
-# Voice Based Answer Evaluation Using NLP and ML
+# Voice Based Answer Detection And Evaluation Using NLP and ML
 ## ( We are currently under development Group 2)
 
 [![N|Development](statics/img/BlitzWar.png)]()
