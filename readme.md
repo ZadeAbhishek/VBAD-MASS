@@ -10,17 +10,18 @@
 - Proposed system will provide voice assistant for visually impaired students.
 - In short, the aim is to increase the efficiency of the evaluation process and reducing the human efforts.
 
-## Thing Done 
+## Things Done 
 - Speech to text implemented (Not proper but working)
 - Text to speech (We are able to save mp3 file of recorded text)
-- Grammer checking
-
-
-
-- keyWord similarity checking
+- Grammer checking (Still improvement required)
+- Similarity checking
+- Keyword evaluation
+- Naive bayes classifier implemented
 
 ## Mile Stone (Phase 1 50%)
-
+- GUI design for this project 
+- Project migration to django
+- implement STT in JS
 - ChatBot (++feature)
 - Documentation
 
