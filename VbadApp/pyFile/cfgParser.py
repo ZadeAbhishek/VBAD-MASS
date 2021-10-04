@@ -20,7 +20,7 @@ def checkGrammer(studentAnswer):
     lines = 0
     refineDocument = []
     while lines < sentencesLenght:
-        print('.............Checking Lines :{}.....................'.format(lines))
+        # print('.............Checking Lines :{}.....................'.format(lines))
         if(len(fileDocument[lines]) > 100):
             start = 0
             end = 100

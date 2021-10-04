@@ -111,8 +111,8 @@ def model(row):
     print('Data=%s, Predicted: %s' % (row, label))
     # print(resultString)
     print('Final result of student is ==> {}'.format(resultString[label]))
+    
 
-
-# unit test
-#row = [0,0,0,0] 
+#unit test
+#row = [50,50,0,50] 
 #model(row)    
