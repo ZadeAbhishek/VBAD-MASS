@@ -13,15 +13,15 @@
 ## Things Done 
 - Speech to text implemented (Not proper but working)
 - Text to speech (We are able to save mp3 file of recorded text)
-- Grammer checking (Still improvement required)
-- Similarity checking
-- Keyword evaluation
-- Naive bayes classifier implemented
+- Sentence similarity checking
+- keyWord similarity checking
 
-## Mile Stone (Phase 1 50%)
-- GUI design for this project 
-- Project migration to django
-- implement STT in JS
+## Mile Stone (Phase 2-70%)
+- Django intrigration
+- UI development
+- Front Migration to Javascript
+- DataBase Creation
+- Grammer checking
 - ChatBot (++feature)
 - Documentation
 
@@ -30,9 +30,10 @@ This is was previouly tested on Fedora OS. This steps are according to Fedora or
 For windows and MaxOS may varry
 ```sh
 pip install pipenv
-pipenv shell
 pipenv install
-pipenv run python init.py
+pipenv shell
+python manage.py livereload (open in different terminal)
+python manage.py runserver
 ```
 ## PR instructions 
 - Please donot commit mp3 folder
