@@ -1,4 +1,4 @@
-# Voice Based Answer Evaluation Using NLP and ML
+# Voice Based Answer Detection And Evaluation Using NLP and ML
 ## ( We are currently under development Group 2)
 
 [![N|Development](statics/img/BlitzWar.png)]()
@@ -10,7 +10,7 @@
 - Proposed system will provide voice assistant for visually impaired students.
 - In short, the aim is to increase the efficiency of the evaluation process and reducing the human efforts.
 
-## Thing Done 
+## Things Done 
 - Speech to text implemented (Not proper but working)
 - Text to speech (We are able to save mp3 file of recorded text)
 - Sentence similarity checking
