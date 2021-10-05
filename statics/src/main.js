@@ -39,17 +39,8 @@ window.onload = function() {
         speech.text = "Abhishek zade"
         window.speechSynthesis.speak(speech);
     });
-
-
-
-    /// Below part is for Speech recognization So STT is implemented in Javascript   
-
-    const texts = document.querySelector(".answer");
-    var copytext = "ANSWER: "
-    var start = false;
-
-
-    window.SpeechRecognition = window.webkitSpeechRecognition;
+/// Below part is for Speech recognization So STT is implemented in Javascript  
+  window.SpeechRecognition = window.webkitSpeechRecognition;
     const recognition = new SpeechRecognition();
     recognition.interimResults = true;
     recognition.addEventListener("result", (e) => {
@@ -77,6 +68,19 @@ window.onload = function() {
             if (text.includes("previous question")) {
                 decrementer()
                 recognition.start();
+                start = false;
+                recognition.stop();
+                increment();
+            }
+            if (text.includes("next question")) {
+                start = false;
+                recognition.stop();
+                increment();
+            }
+            if (text.includes("previous question")) {
+                start = false;
+                recognition.stop();
+                decrementer()
             }
         }
 
@@ -99,6 +103,8 @@ window.onload = function() {
             // recognition.start();
             // start = true
             driver(index)
+            recognition.start();
+            start = true
         };
     }
 
@@ -118,7 +124,8 @@ window.onload = function() {
             start = true
             recognition.start();
         }
-
+            // recognition.start();
+            // start = true
     }
 
     // previous and Next button listner
@@ -164,5 +171,6 @@ window.onload = function() {
             // driver(index)
         }
     });
+    driver(index)
 
 }
