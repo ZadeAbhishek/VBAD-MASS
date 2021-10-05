@@ -1,27 +1,11 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HTML 5 Boilerplate</title>
-    <link rel="stylesheet" href="{% static 'css/mainstyle.css' %}">
-    <script src="{% static 'src/main.js' %}"></script>
-</head>
-
-<body>
-    <div class="bg">
-    <nav>
-    <ul><a href='./'>Home</a></ul>
-    <ul><a href='./about'>Test</a></ul>
-    <ul><a href='./'>Result</a></ul>
-    <ul><a href='./'>Query</a></ul>
-    </nav>
+  {% extends "main.html" %}
+  {% block content %}
     <div class="panel">
-     <div id="questionPanel" class="question"> Q1.What is something ? </div>
-     <textarea class="answer" rows="300" cols="100" name="comment" form="usrform"></textarea>
+     <div id="questionPanel" class="question"> Questions......</div>
+     <button id="queplayButton" class="playButton">Play</button>
+      
+     <textarea class="answer" rows="300" cols="100" name="comment" form="usrform">ANSWER: </textarea>
+     <button id="answerplayButton" class="playButton">Play</button>
     </div>
     <div class="controlpanel">
     <button id="prevButton" class="cpButton">Prev</button>
@@ -29,7 +13,4 @@
     <button id="nextButton" class="cpButton">Next</button>
     </div>
     </div>
-   
-</body>
-
-</html>
+   {% endblock %}

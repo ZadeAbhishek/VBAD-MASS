@@ -1,6 +1,7 @@
 window.onload = function() {
-    /// Now Question and Awnswer Array
-    // Global variable
+    console.log("checking dfsdsdfsdfdfds")
+        /// Now Question and Awnswer Array
+        // Global variable
     var question = [' Q1. What is GIT ?', ' Q2. What is GITHUB ?', ' Q3. Something is in Air ?']
     var answer = ['', '', '']
     var index = 0
@@ -24,14 +25,31 @@ window.onload = function() {
 
         driver(index)
     }
+    /// Text to speech 
+    let speech = new SpeechSynthesisUtterance();
+    speech.lang = "en";
+    document.getElementsByClassName("playButton")[0].addEventListener("click", () => {
+        console.log("click")
+        speech.rate = 10;
+        speech.volume = 100;
+        speech.pitch = 10;
+        let voices = [];
+        voices = window.speechSynthesis.getVoices();
+        speech.voice = voices[0];
+        speech.text = "Abhishek zade"
+        window.speechSynthesis.speak(speech);
+    });
+
+
 
     /// Below part is for Speech recognization So STT is implemented in Javascript   
-    console.log("checking df")
+
     const texts = document.querySelector(".answer");
     var copytext = "ANSWER: "
     var start = false;
 
-    window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    window.SpeechRecognition = window.webkitSpeechRecognition;
     const recognition = new SpeechRecognition();
     recognition.interimResults = true;
     recognition.addEventListener("result", (e) => {
@@ -40,28 +58,25 @@ window.onload = function() {
             .map((result) => result.transcript)
             .join('');
 
-
+        texts.innerText = copytext;
         // Use to check keyword in the text for Active cmd feature 
         if (e.results[0].isFinal) {
-            copytext = copytext + '' + text
+            copytext = '' + copytext + '' + text
             if (text.includes("stop and submit")) {
                 start = false;
                 recognition.stop();
             }
             if (text.includes("submit and next question")) {
-                start = false;
-                recognition.stop();
                 increment();
+                recognition.start();
             }
             if (text.includes("next question")) {
-                start = false;
-                recognition.stop();
                 increment();
+                recognition.start();
             }
             if (text.includes("previous question")) {
-                start = false;
-                recognition.stop();
                 decrementer()
+                recognition.start();
             }
         }
 
@@ -81,14 +96,16 @@ window.onload = function() {
 
     if (typeof button !== 'undefined' && button !== null) {
         button.onclick = () => {
-            recognition.start();
-            start = true
+            // recognition.start();
+            // start = true
+            driver(index)
         };
     }
 
 
 
     function driver(index) {
+        console.log("driver");
         //First Function to call on website load
         //load question
         var questionPanel = document.querySelector('#questionPanel');
@@ -97,8 +114,11 @@ window.onload = function() {
             //console.log(question[index])
         texts.innerText = answer[index];
         copytext = "ANSWER: "
-            // recognition.start();
-            // start = true
+        if (start) {
+            start = true
+            recognition.start();
+        }
+
     }
 
     // previous and Next button listner
@@ -115,8 +135,34 @@ window.onload = function() {
     }
 
 
-    driver(index)
+    //driver(index)
 
+    // keyboards listners
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'd') {
+            //document.body.style = "color: white; background-color: #111111";
+            console.log("D");
+            increment()
 
+        }
+        if (event.key === 'a') {
+            //document.body.style = "color: white; background-color: #111111";
+            console.log("a");
+            decrementer()
+        }
+        if (event.key === 's') {
+            //document.body.style = "color: white; background-color: #111111";
+            console.log("s");
+            start = true
+            driver(index)
+        }
+        if (event.key === 'z') {
+            //document.body.style = "color: white; background-color: #111111";
+            console.log("z");
+            start = false;
+            recognition.stop();
+            // driver(index)
+        }
+    });
 
 }
