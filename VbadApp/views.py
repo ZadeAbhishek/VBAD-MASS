@@ -10,3 +10,6 @@ def index(request):
 
 def about(request):
     return HttpResponse("This is about")
+
+def home(request) :
+    return render(request,'main.html')

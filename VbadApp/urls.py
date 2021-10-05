@@ -6,6 +6,8 @@ from django.urls.conf import include
 from VbadApp import views
 
 urlpatterns = [
-    path("",views.index, name='VbadApp'),
-    path("about",views.about, name='about')
+    path("",views.home, name='VbadApp'),
+    path("about",views.about, name='about'),
+    path("test",views.index, name='index')
+    
 ]
