@@ -54,3 +54,7 @@ def about(request):
 
 def home(request) :
     return render(request,'main.html')
+
+def result(request) :
+    CompleteResult = studentID.objects.all
+    return render(request,'result.html',{'allresult':CompleteResult})

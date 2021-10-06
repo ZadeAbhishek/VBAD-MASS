@@ -1,8 +1,9 @@
 window.onload = function() {
+
     var studentName = "Abhishek"
     var texts = document.getElementsByClassName('answer')[0];
     var submit = document.getElementsByClassName('submit')[0];
-    console.log("checking d")
+    console.log("checking dds")
         /// Now Question and Awnswer Array
         // Global variable
     var question = [' Question-1. What is GIT ?', ' Question-2. What is GITHUB ?', ' Question-3. Something is in Air ?']
@@ -227,7 +228,7 @@ window.onload = function() {
         //console.log(questionPanel)
         questionPanel.innerText = question[index]
         console.log(question.length - 1)
-
+        speak(question[index]);
         if (index == question.length - 1) {
             console.log("her")
             submit.style.visibility = 'visible';
@@ -235,6 +236,7 @@ window.onload = function() {
             submit.style.visibility = 'hidden';
         }
         //console.log(question[index])
+
         texts.innerText = answer[index];
         copytext = "ANSWER: "
         if (start) {
@@ -289,5 +291,7 @@ window.onload = function() {
         }
     });
     //  driver(index)
-
+    document.getElementById('StartTest').addEventListener('click', (e) => {
+        window.location.href = "./test";
+    })
 }

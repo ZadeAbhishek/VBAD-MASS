@@ -8,6 +8,9 @@ from VbadApp import views
 urlpatterns = [
     path("",views.home, name='VbadApp'),
     path("about",views.about, name='about'),
-    path("test",views.index, name='index')
+    path("test",views.index, name='index'),
+    path("result",views.result, name='result'),
+
+    
     
 ]
