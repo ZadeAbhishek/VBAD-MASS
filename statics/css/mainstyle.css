@@ -56,6 +56,7 @@ a:active {
     border-radius: 20px;
     border-style: solid;
     border-color: rgb(26, 26, 26);
+    overflow-y: scroll;
 }
 
 .question {
@@ -86,24 +87,27 @@ a:active {
 }
 
 .cpButton {
+    background-repeat: no-repeat;
+    /** disable repeating */
+    background-position: center;
     background-color: white;
     /* Green */
     border: none;
     color: black;
     padding: 10px;
-    text-align: center;
-    text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 50px;
     margin: 2px 40px;
     cursor: pointer;
     border-radius: 60%;
     width: 85px;
     height: 85px;
+    background-size: 50px 50px;
 }
 
 .cpButton:hover {
-    background-color: grey;
+    background-color: green;
+    color: white;
 }
 
 .controlpanel {
@@ -171,4 +175,52 @@ a:active {
 
 .submit:hover {
     background-color: coral;
+}
+
+.result {
+    font-size: 30px;
+    font-weight: normal;
+}
+
+.result ul {
+    background-color: rgb(202, 142, 121);
+    color: cornsilk;
+}
+
+.resultitle {
+    font-size: 50px;
+    text-align: center;
+    font-weight: bolder;
+    background-color: rgb(130, 187, 130);
+    color: white;
+}
+
+#StartTest {
+    position: fixed;
+    top: 65%;
+    right: 45%;
+    width: 150px;
+    height: 150px;
+    font-size: 25px;
+    font-weight: bolder;
+}
+
+.instruction {
+    text-align: center;
+    font-size: 60px;
+    padding: 20px;
+    margin-top: 50px;
+    font-weight: bolder;
+}
+
+#prevButton {
+    background-image: url(../icons/chevron-left-solid.svg);
+}
+
+#nextButton {
+    background-image: url(../icons/chevron-right-solid.svg);
+}
+
+#recordButton {
+    background-image: url(../icons/microphone-solid.svg);
 }

@@ -17,11 +17,17 @@
     <nav>
     <ul><a href='./'>Home</a></ul>
     <ul><a href='./test'>Test</a></ul>
-    <ul><a href='./'>Result</a></ul>
+    <ul><a href='./result'>Result</a></ul>
     <ul><a href='./'>Query</a></ul>
     </nav>
-    {% block content %}
 
+    {% block content %}
+    <div class="panel">
+    <div class="instruction">
+    Welcome Best of luck ! <br>
+    Press start to Enter Examination</div>
+    <button id="StartTest" class="cpButton">Start</button>
+    </div>
     {% endblock %}
    
 </body>
