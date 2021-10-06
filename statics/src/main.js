@@ -1,8 +1,11 @@
 window.onload = function() {
-    console.log("checking dfsdsdfsdfdfds")
+    var studentName = "Abhishek"
+    var texts = document.getElementsByClassName('answer')[0];
+    var submit = document.getElementsByClassName('submit')[0];
+    console.log("checking d")
         /// Now Question and Awnswer Array
         // Global variable
-    var question = [' Q1. What is GIT ?', ' Q2. What is GITHUB ?', ' Q3. Something is in Air ?']
+    var question = [' Question-1. What is GIT ?', ' Question-2. What is GITHUB ?', ' Question-3. Something is in Air ?']
     var answer = ['', '', '']
     var index = 0
 
@@ -25,22 +28,103 @@ window.onload = function() {
 
         driver(index)
     }
-    /// Text to speech 
-    let speech = new SpeechSynthesisUtterance();
-    speech.lang = "en";
-    document.getElementsByClassName("playButton")[0].addEventListener("click", () => {
-        console.log("click")
-        speech.rate = 10;
-        speech.volume = 100;
-        speech.pitch = 10;
-        let voices = [];
-        voices = window.speechSynthesis.getVoices();
-        speech.voice = voices[0];
-        speech.text = "Abhishek zade"
-        window.speechSynthesis.speak(speech);
-    });
-/// Below part is for Speech recognization So STT is implemented in Javascript  
-  window.SpeechRecognition = window.webkitSpeechRecognition;
+
+    function speak(string) {
+        var msg = new SpeechSynthesisUtterance(string);
+        msg.rate = 1;
+        msg.pitch = 1.2;
+        window.speechSynthesis.speak(msg);
+    }
+    var playbutton = document.getElementsByClassName("playButton")[0];
+    playbutton.addEventListener("click", (e) => {
+        speak(question[index]);
+    })
+    var answerbutton = document.getElementsByClassName("playButton")[1];
+    answerbutton.addEventListener("click", (e) => {
+        speak(answer[index]);
+    })
+
+
+
+
+    // var speechUtteranceChunker = function(utt, settings, callback) {
+    //     settings = settings || {};
+    //     var newUtt;
+    //     var txt = (settings && settings.offset !== undefined ? utt.text.substring(settings.offset) : utt.text);
+    //     if (utt.voice && utt.voice.voiceURI === 'native') { // Not part of the spec
+    //         newUtt = utt;
+    //         newUtt.text = txt;
+    //         newUtt.addEventListener('end', function() {
+    //             if (speechUtteranceChunker.cancel) {
+    //                 speechUtteranceChunker.cancel = false;
+    //             }
+    //             if (callback !== undefined) {
+    //                 callback();
+    //             }
+    //         });
+    //     } else {
+    //         var chunkLength = (settings && settings.chunkLength) || 160;
+    //         var pattRegex = new RegExp('^[\\s\\S]{' + Math.floor(chunkLength / 2) + ',' + chunkLength + '}[.!?,]{1}|^[\\s\\S]{1,' + chunkLength + '}$|^[\\s\\S]{1,' + chunkLength + '} ');
+    //         var chunkArr = txt.match(pattRegex);
+
+    //         if (chunkArr[0] === undefined || chunkArr[0].length <= 2) {
+    //             //call once all text has been spoken...
+    //             if (callback !== undefined) {
+    //                 callback();
+    //             }
+    //             return;
+    //         }
+    //         var chunk = chunkArr[0];
+    //         newUtt = new SpeechSynthesisUtterance(chunk);
+    //         var x;
+    //         for (x in utt) {
+    //             if (utt.hasOwnProperty(x) && x !== 'text') {
+    //                 newUtt[x] = utt[x];
+    //             }
+    //         }
+    //         newUtt.addEventListener('end', function() {
+    //             if (speechUtteranceChunker.cancel) {
+    //                 speechUtteranceChunker.cancel = false;
+    //                 return;
+    //             }
+    //             settings.offset = settings.offset || 0;
+    //             settings.offset += chunk.length - 1;
+    //             speechUtteranceChunker(utt, settings, callback);
+    //         });
+    //     }
+
+    //     if (settings.modifier) {
+    //         settings.modifier(newUtt);
+    //     }
+    //     console.log(newUtt); //IMPORTANT!! Do not remove: Logging the object out fixes some onend firing issues.
+    //     //placing the speak invocation inside a callback fixes ordering and onend issues.
+    //     setTimeout(function() {
+    //         speechSynthesis.speak(newUtt);
+    //     }, 0);
+    // };
+
+    // //create an utterance as you normally would...
+    // var myLongText = "dfdsfdsfdsf";
+
+    // var utterance = new SpeechSynthesisUtterance(myLongText);
+
+    // //modify it as you normally would
+    // var voiceArr = speechSynthesis.getVoices();
+    // utterance.voice = voiceArr[2];
+
+    // //pass it into the chunking function to have it played out.
+    // //you can set the max number of characters by changing the chunkLength property below.
+    // //a callback function can also be added that will fire once the entire text has been spoken.
+    // speechUtteranceChunker(utterance, {
+    //     chunkLength: 120
+    // }, function() {
+    //     //some code to execute when done
+    //     console.log('done');
+    // });
+
+
+    /// Below part is for Speech recognization So STT is implemented in Javascript  
+    window.SpeechRecognition = window.webkitSpeechRecognition;
     const recognition = new SpeechRecognition();
     recognition.interimResults = true;
     recognition.addEventListener("result", (e) => {
@@ -107,8 +191,33 @@ window.onload = function() {
             start = true
         };
     }
+    var studentid = 12458
+    submit.addEventListener('click', (e) => {
+        e.preventDefault()
+        url = ""
+        const data = {
+            studentid: studentid,
+            studentname: studentName,
+            answerone: answer[0],
+            answertwo: answer[1],
+            answerthree: answer[2],
+        }
+        console.log(data)
 
+        $.ajax({
+            method: "post",
+            url: url,
+            dataType: "json",
+            data: data,
+            success: function(responce) {
+                console.log(responce)
+            },
+            error: function(error) {
+                console.log(error)
+            },
 
+        })
+    })
 
     function driver(index) {
         console.log("driver");
@@ -117,15 +226,23 @@ window.onload = function() {
         var questionPanel = document.querySelector('#questionPanel');
         //console.log(questionPanel)
         questionPanel.innerText = question[index]
-            //console.log(question[index])
+        console.log(question.length - 1)
+
+        if (index == question.length - 1) {
+            console.log("her")
+            submit.style.visibility = 'visible';
+        } else {
+            submit.style.visibility = 'hidden';
+        }
+        //console.log(question[index])
         texts.innerText = answer[index];
         copytext = "ANSWER: "
         if (start) {
             start = true
             recognition.start();
         }
-            // recognition.start();
-            // start = true
+        // recognition.start();
+        // start = true
     }
 
     // previous and Next button listner
@@ -171,6 +288,6 @@ window.onload = function() {
             // driver(index)
         }
     });
-    driver(index)
+    //  driver(index)
 
 }
