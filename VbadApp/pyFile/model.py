@@ -98,7 +98,7 @@ def predict(summaries, row):
 
 def model(row):
     # Make a prediction with Naive Bayes
-    filename = '../dataset/testDataseets.csv'
+    filename = './statics/dataset/testDataseets.csv'
     dataset = load_csv(filename)
     for i in range(len(dataset[0])-1):
         str_column_to_float(dataset, i)
@@ -108,9 +108,10 @@ def model(row):
     model = summarize_by_class(dataset)
     # predict the label
     label = predict(model, row)
-    print('Data=%s, Predicted: %s' % (row, label))
+    #print('Data=%s, Predicted: %s' % (row, label))
     # print(resultString)
-    print('Final result of student is ==> {}'.format(resultString[label]))
+    #print('Final result of student is ==> {}'.format(resultString[label]))
+    return resultString[label]
     
 
 #unit test

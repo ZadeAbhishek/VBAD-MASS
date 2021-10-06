@@ -151,3 +151,24 @@ a:active {
     top: 28%;
     right: 6%;
 }
+
+.submit {
+    visibility: hidden;
+    position: fixed;
+    right: 10%;
+    bottom: 16%;
+    background-color: seagreen;
+    color: white;
+    padding: 14px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.submit:hover {
+    background-color: coral;
+}
