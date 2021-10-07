@@ -12,14 +12,16 @@
 
 ## Things Done 
 - Speech to text implemented (Not proper but working)
-- Text to speech (We are able to save mp3 file of recorded text)
+- Text to speech 
 - Sentence similarity checking
 - keyWord similarity checking
-
-## Mile Stone (Phase 2-70%)
 - Django intrigration
 - UI development
 - Front Migration to Javascript
+
+## Mile Stone (Phase 2-70%)
+- Multiuser 
+- Techer Question portal
 - DataBase Creation
 - Grammer checking
 - ChatBot (++feature)
