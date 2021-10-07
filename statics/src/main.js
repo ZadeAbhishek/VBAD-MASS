@@ -3,10 +3,10 @@ window.onload = function() {
     var studentName = "Abhishek"
     var texts = document.getElementsByClassName('answer')[0];
     var submit = document.getElementsByClassName('submit')[0];
-    console.log("checking dds")
+    console.log("checking ddssssss")
         /// Now Question and Awnswer Array
         // Global variable
-    var question = [' Question-1. What is GIT ?', ' Question-2. What is GITHUB ?', ' Question-3. Something is in Air ?']
+    var question = [' Question-1. What is a version control system (VCS)?', ' Question-2. What is the git pull command?', ' Question-3.  What is a conflict?']
     var answer = ['', '', '']
     var index = 0
 
@@ -129,6 +129,7 @@ window.onload = function() {
     const recognition = new SpeechRecognition();
     recognition.interimResults = true;
     recognition.addEventListener("result", (e) => {
+        copytext = answer[index]
         const text = Array.from(e.results)
             .map((result) => result[0])
             .map((result) => result.transcript)
@@ -138,9 +139,8 @@ window.onload = function() {
         // Use to check keyword in the text for Active cmd feature 
         if (e.results[0].isFinal) {
             copytext = '' + copytext + '' + text
-            if (text.includes("stop and submit")) {
-                start = false;
-                recognition.stop();
+            if (text.includes("stop recording")) {
+                stopRec();
             }
             if (text.includes("submit and next question")) {
                 increment();
@@ -167,6 +167,15 @@ window.onload = function() {
                 recognition.stop();
                 decrementer()
             }
+            if (text.includes("repeat question")) {
+                // console.log(question[index])
+                speak(question[index])
+            }
+            if (text.includes("speak answer")) {
+                //console.log(question[index])
+                speak(answer[index])
+            }
+
         }
 
 
@@ -180,17 +189,39 @@ window.onload = function() {
         }
 
     });
-    var start = true;
+    var start = false;
     let button = document.getElementById('recordButton');
+    let recordIcon = document.getElementsByClassName('recording')[0];
+
 
     if (typeof button !== 'undefined' && button !== null) {
         button.onclick = () => {
             // recognition.start();
             // start = true
-            driver(index)
-            recognition.start();
-            start = true
+
+            if (start != true && index == 0) {
+                speak("Recording start");
+                startRec();
+            } else if (start != true && index > 0) {
+
+            } else {
+                stopRec();
+            }
         };
+    }
+
+
+    function startRec() {
+        driver(index)
+            //     recognition.start();
+            //     start = true
+        recordIcon.style.visibility = 'visible';
+    }
+
+    function stopRec() {
+        recordIcon.style.visibility = 'hidden';
+        start = false
+        recognition.stop();
     }
     var studentid = 12458
     submit.addEventListener('click', (e) => {
@@ -239,7 +270,7 @@ window.onload = function() {
 
         texts.innerText = answer[index];
         copytext = "ANSWER: "
-        if (start) {
+        if (start != true) {
             start = true
             recognition.start();
         }
@@ -291,7 +322,7 @@ window.onload = function() {
         }
     });
     //  driver(index)
-    document.getElementById('StartTest').addEventListener('click', (e) => {
-        window.location.href = "./test";
-    })
+    // var starttest = document.getElementById('StartTest').addEventListener('click', (e) => {
+    //     window.location.href = "./test";
+    // })
 }

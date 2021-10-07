@@ -57,6 +57,7 @@ a:active {
     border-style: solid;
     border-color: rgb(26, 26, 26);
     overflow-y: scroll;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .question {
@@ -80,6 +81,7 @@ a:active {
     border-style: solid;
     border-color: black;
     border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .answer input[type="text"] {
@@ -102,7 +104,8 @@ a:active {
     border-radius: 60%;
     width: 85px;
     height: 85px;
-    background-size: 50px 50px;
+    background-size: 40px 40px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .cpButton:hover {
@@ -138,6 +141,11 @@ a:active {
     width: 55px;
     height: 55px;
     font-weight: bold;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-image: url(../icons/play-solid.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
 }
 
 .playButton:hover {
@@ -193,9 +201,11 @@ a:active {
     font-weight: bolder;
     background-color: rgb(130, 187, 130);
     color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #StartTest {
+    background-color: coral;
     position: fixed;
     top: 65%;
     right: 45%;
@@ -203,6 +213,10 @@ a:active {
     height: 150px;
     font-size: 25px;
     font-weight: bolder;
+}
+
+#StartTest:hover {
+    background-color: cornsilk;
 }
 
 .instruction {
@@ -223,4 +237,34 @@ a:active {
 
 #recordButton {
     background-image: url(../icons/microphone-solid.svg);
+}
+
+.recording {
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(78, 78, 78);
+    position: fixed;
+    top: 10%;
+    height: 50px;
+    width: 150px;
+    color: blanchedalmond;
+    font-size: 35px;
+    padding: 5px;
+}
+
+.recordicon {
+    height: 50px;
+    width: 50px;
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 40px 40px;
+    background-image: url(../icons/record-vinyl-solid.svg);
+    animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
 }

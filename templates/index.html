@@ -1,13 +1,13 @@
 
  {% extends "main.html" %}
   {% block content %}
-
+   <div class="recording"><div class="recordicon"></div>Rec...</div>
     <div class="panel">
      <div id="questionPanel" class="question"> Questions......</div>
-     <button id="queplayButton" class="playButton">Play</button>
+     <button id="queplayButton" class="playButton"></button>
      {% csrf_token %}  
      <textarea class="answer" rows="300" cols="100" name="comment" form="usrform">ANSWER: </textarea>
-     <button id="answerplayButton" class="playButton">Play</button>
+     <button id="answerplayButton" class="playButton"></button>
     </div>
     <div class="controlpanel">
     <button id="prevButton" class="cpButton"></button>

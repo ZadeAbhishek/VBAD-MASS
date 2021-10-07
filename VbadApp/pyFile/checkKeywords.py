@@ -12,7 +12,7 @@ from nltk.tokenize.treebank import TreebankWordDetokenizer
 # Function to check keywords
 def checkKeyword(test,testKeywords):
 
-   print("..........................Extracting keyowords...................................")
+   #print("..........................Extracting keyowords...................................")
    testKeywords = testKeywords.lower()
    test = test.lower()
    # This will reduce the lines for example the if there is 10 line 
@@ -48,10 +48,10 @@ def checkKeyword(test,testKeywords):
                  #print('Found : {}'.format(Studentkeyword[swords]))
                  average += 1
       elemfound = list(dict.fromkeys(elemfound))
-      print(elemfound)
+      #print(elemfound)
       elemfound = len(elemfound)
-      print(elemfound)
-      print(average) 
+      #print(elemfound)
+      #print(average) 
       #print(elemfound)
       #print(testKeywordslen)
       if(elemfound == 0):
@@ -61,7 +61,7 @@ def checkKeyword(test,testKeywords):
       return ((elemfound)/(average))*100
 
    count = compare(keyword_extracted,testKeywords)
-   print(count)
+   #print(count)
    return count
 
 
