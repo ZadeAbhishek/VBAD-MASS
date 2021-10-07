@@ -139,6 +139,10 @@ window.onload = function() {
         // Use to check keyword in the text for Active cmd feature 
         if (e.results[0].isFinal) {
             copytext = '' + copytext + '' + text
+            if (text.includes("stop recording and submit")) {
+                stopRec();
+                window.location.href = "./result";
+            }
             if (text.includes("stop recording")) {
                 stopRec();
             }
@@ -249,6 +253,7 @@ window.onload = function() {
             },
 
         })
+        alert("Sumbitted")
     })
 
     function driver(index) {

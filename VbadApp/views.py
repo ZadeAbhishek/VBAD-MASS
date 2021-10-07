@@ -16,8 +16,8 @@ def index(request):
     # So i am thinking of calling the 
     NameStudent = request.POST.get('studentname')
     fristAnswer = request.POST.get('answerone')
-    teacherAnswerone = "A VCS keeps track of the contributions of the developers working as a team on the projects. They maintain the history of code changes done and with project evolution, it gives an upper hand to the developers to introduce new code, fix bugs, and run tests with confidence that their previously working copy could be restored at any moment in case things go wrong."
-    teacherKeyword = "fix bugs run tests"
+    teacherAnswerone = "A VCS keeps track of the contributions of the developers working as a team on the projects. They maintain the history of code changes done and with project evolution, it gives an upper hand to the developers to introduce new code, fix bugs, and run tests with confidence that their previously working copy could be restored at any moment in case things go wrong.Version control, also known as source control, is the practice of tracking and managing changes to software code. Version control systems are software tools that help software teams manage changes to source code over time. As development environments have accelerated, version control systems help software teams work faster and smarter."
+    teacherKeyword = "contribution  developer  development software"
     similarAnswer, similarit, keyWordtest, GrammerScore, finalresult = checkinit(str(fristAnswer),teacherAnswerone,teacherKeyword)
     formsone = studentID(questionNumber=str(1),tdifdSimilarity =str(similarAnswer),vectorSimilarity = str(similarit),keywordSimilarity=str(keyWordtest),GrammerSimilarity = str(GrammerScore),finalResult=finalresult)
     
