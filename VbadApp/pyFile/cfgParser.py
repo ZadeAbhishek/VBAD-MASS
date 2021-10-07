@@ -26,7 +26,7 @@ def checkGrammer(studentAnswer):
             end = 100
             spt = True
             while(spt):
-               print('.............Checking from line :{}.....................'.format(start))
+               #print('.............Checking from line :{}.....................'.format(start))
                #print(start)
                refineDocument.append(split(fileDocument[lines],start,end))
                if(start > len(fileDocument[lines])):
@@ -49,7 +49,7 @@ def checkGrammer(studentAnswer):
         #print('Sentence lenght {}'.format(len(refineDocument[sentence])))
         cG = parser.parse(refineDocument[sentence])
         ginger_corrections = cG['corrections']
-        print('correctionlenght{}'.format(len(ginger_corrections)))
+        #print('correctionlenght{}'.format(len(ginger_corrections)))
         #print(cG["result"])
         global averageScore
         averageScore += len(ginger_corrections)
@@ -79,7 +79,7 @@ def checkGrammer(studentAnswer):
     total = (averageScore/len(refineDocument)) * 10
     total = 100 - total
     total = round(total, 2)
-    print(total)
+    #print(total)
     return total
 
 def split(string,startposition,end):

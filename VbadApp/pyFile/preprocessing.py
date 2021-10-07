@@ -24,8 +24,8 @@ def preprocessing(data):
 
     #storing the puntuation free text
     data = remove_punctuation(data)
-    print("\n .......................................Removing punctuation ...............................................................")
-    print(data)
+    #print("\n .......................................Removing punctuation ...............................................................")
+    #print(data)
 
   
 
@@ -39,10 +39,10 @@ def preprocessing(data):
         if w not in stop_words:
            filtered_sentence.append(w)
  
-    print(word_tokens)
+    #print(word_tokens)
 
-    print(".......................Filter ...................................................")
-    print(filtered_sentence)
+    #print(".......................Filter ...................................................")
+    #print(filtered_sentence)
     combined_data = TreebankWordDetokenizer().detokenize(filtered_sentence)
-    print(combined_data)
+    #print(combined_data)
     return combined_data
