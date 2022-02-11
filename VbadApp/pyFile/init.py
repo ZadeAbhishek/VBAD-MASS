@@ -38,7 +38,9 @@ def checkinit(value,teachersAnswers,teacherKeyword):
     keyWordtest = checkKeyword(value,teacherKeyword)
     
     # Checking grammer for Student Answer
-    GrammerScore  = checkGrammer(value)
+    # GrammerScore  = checkGrammer(value)
+    GrammerScore  = 100
+    
     
     # Printing Total Result of Grammer
     #print('........Score..........')

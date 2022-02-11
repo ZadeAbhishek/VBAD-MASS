@@ -1,0 +1,12 @@
+{% extends "main.html" %}
+{% block content %}
+<div class="panel">
+    <div class="teacher-question-form">
+<form method='POST'>{% csrf_token %}
+       {{ form.as_p }}
+      <input type='submit' value='save' />  
+</form>
+</div>
+</div>  
+
+   {% endblock %}

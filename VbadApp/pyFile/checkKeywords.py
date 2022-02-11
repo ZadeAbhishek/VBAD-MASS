@@ -44,7 +44,8 @@ def checkKeyword(test,testKeywords):
       for twords in range(len(teacherkeyword)) :
           for swords in range(len(Studentkeyword)):
               if (SequenceMatcher(None,teacherkeyword[twords],Studentkeyword[swords]).ratio()) > 0.95:
-                 elemfound.append(Studentkeyword[swords]) 
+                 elemfound.append(Studentkeyword[swords])
+                 print(elemfound)
                  #print('Found : {}'.format(Studentkeyword[swords]))
                  average += 1
       elemfound = list(dict.fromkeys(elemfound))
