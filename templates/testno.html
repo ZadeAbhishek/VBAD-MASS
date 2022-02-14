@@ -1,0 +1,16 @@
+{% extends "main.html" %}
+{% block content %}
+ 
+<div class="test-select">
+<form action="test">
+    <label for="cars">Choose a test:</label>
+    <select name="index" id="cars">
+      {% for item in testno %}
+      <option value="{{item.testno}}">{{item.testno}}</option>
+      {% endfor %} 
+    </select>
+    <br><br>
+    <input type="submit" value="Submit">
+  </form>
+</div>
+{% endblock %}

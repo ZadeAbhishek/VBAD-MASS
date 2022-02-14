@@ -5,4 +5,7 @@ class questionForm(forms.Form):
     question = forms.CharField()
     answer = forms.CharField()
     keyword = forms.CharField()
+    testNo = forms.IntegerField() 
     
+class testnum(forms.Form):
+    testNo = forms.IntegerField()    

@@ -1,13 +1,16 @@
+from email import charset
 from django.shortcuts import render
+from django.shortcuts import HttpResponse
 from django.http import QueryDict
 # Create your views here.
-from django.http.response import HttpResponse
+# from django.http.response import HttpResponse
 from django.shortcuts import render
 
-from VbadApp.models import studentID
+from VbadApp.models import studentID,teacher,noTest
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .pyFile.init import checkinit 
+from .forms import questionForm,testnum
 
 # Create your views here.
 @csrf_exempt
@@ -35,7 +38,7 @@ def index(request):
     
     
     data = {}
-    if request.is_ajax():
+    if is_ajax(request=request):
         formsone.save()
         formstwo.save()
         formsthree.save()
@@ -49,8 +52,8 @@ def index(request):
     } 
     return render(request,'index.html',context)
 
-def about(request):
-    return HttpResponse("This is about")
+# def about(request):
+#     return HttpResponse("This is about")
 
 def home(request) :
     return render(request,'main.html')
@@ -58,3 +61,36 @@ def home(request) :
 def result(request) :
     CompleteResult = studentID.objects.all
     return render(request,'result.html',{'allresult':CompleteResult})
+
+def is_ajax(request):
+    return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest' 
+
+@csrf_exempt
+def teacherpanel(request):
+    form = questionForm(request.POST)
+    testnoobj = noTest.objects.all
+    if form.is_valid():
+        context = {}
+        Tquestion = form.cleaned_data['question']
+        Tanswers = form.cleaned_data['answer']
+        Tkeywords = form.cleaned_data['keyword']
+        Tnumber = form.cleaned_data['questionNumber']
+        testNo = form.cleaned_data['testNo']
+        #notestdb = noTest.objects.get()
+        teacherdb = teacher(questionNo=Tnumber,question=Tquestion,answer=Tanswers,keyword=Tkeywords,referring_testno=testNo)
+        #teacherdb.referring_testno_id = testNo
+        print(testNo)
+        teacherdb.save()
+        #notestdb.save()
+    return render(request,'teacherpanel.html',{'form':form,'testnoobj': testnoobj})
+
+def testno(request):
+    testno = noTest.objects.all
+    return render(request,'testno.html',{'testno':testno})
+def createTest(request):
+    testform = testnum(request.POST)
+    if testform.is_valid():
+        Testno = testform.cleaned_data['testNo']
+        testdb = noTest(testno=Testno)
+        testdb.save()
+    return render(request,'createtest.html',{'testform': testform})

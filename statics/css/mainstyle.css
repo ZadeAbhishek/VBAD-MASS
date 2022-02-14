@@ -280,3 +280,31 @@ a:active {
 .form-group {
     padding: 20px;
 }
+
+.testno {
+    width: 500px;
+    height: 200px;
+    background-color: aquamarine;
+    border-color: black;
+    margin: 2px;
+    border: 2px;
+    text-align: center;
+}
+
+.numtest {
+    text-align: center;
+    padding: 10px;
+}
+
+.test-select {
+    background-color: black;
+    color: aliceblue;
+    width: 250px;
+    height: 150px;
+    right: 45%;
+    position: fixed;
+    top: 30%;
+    font-weight: bolder;
+    padding: 20px;
+    font-size: 30px;
+}
