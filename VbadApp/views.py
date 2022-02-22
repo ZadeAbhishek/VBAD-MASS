@@ -6,7 +6,7 @@ from django.http import QueryDict
 # from django.http.response import HttpResponse
 from django.shortcuts import render
 
-from VbadApp.models import studentID,teacher,noTest
+from VbadApp.models import studentID,teacher,Testno,question
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .pyFile.init import checkinit 
@@ -66,31 +66,32 @@ def is_ajax(request):
     return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest' 
 
 @csrf_exempt
-def teacherpanel(request):
+def questionpanel(request):
     form = questionForm(request.POST)
-    testnoobj = noTest.objects.all
+    testnoobj = Testno.objects.all
     if form.is_valid():
         context = {}
         Tquestion = form.cleaned_data['question']
         Tanswers = form.cleaned_data['answer']
         Tkeywords = form.cleaned_data['keyword']
-        Tnumber = form.cleaned_data['questionNumber']
+        Tnumber = form.cleaned_data['teacherNo']
         testNo = form.cleaned_data['testNo']
         #notestdb = noTest.objects.get()
-        teacherdb = teacher(questionNo=Tnumber,question=Tquestion,answer=Tanswers,keyword=Tkeywords,referring_testno=testNo)
+        teacherdb = question(question=Tquestion,answer=Tanswers,keyword=Tkeywords,testno=testNo,teacherNumber=Tnumber)
         #teacherdb.referring_testno_id = testNo
         print(testNo)
         teacherdb.save()
         #notestdb.save()
-    return render(request,'teacherpanel.html',{'form':form,'testnoobj': testnoobj})
+    return render(request,'questionpanel.html',{'form':form,'testnoobj': testnoobj})
 
 def testno(request):
-    testno = noTest.objects.all
+    testno = Testno.objects.all
     return render(request,'testno.html',{'testno':testno})
 def createTest(request):
     testform = testnum(request.POST)
     if testform.is_valid():
-        Testno = testform.cleaned_data['testNo']
-        testdb = noTest(testno=Testno)
+        create_test = testform.cleaned_data['testNo']
+        create_name = testform.cleaned_data['testname']
+        testdb = Testno(testno=create_test,TestName = create_name)
         testdb.save()
     return render(request,'createtest.html',{'testform': testform})

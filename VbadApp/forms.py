@@ -1,11 +1,12 @@
 from django import forms
 
 class questionForm(forms.Form):
-    questionNumber = forms.IntegerField()
-    question = forms.CharField()
-    answer = forms.CharField()
+    question = forms.CharField(widget=forms.Textarea)
+    answer = forms.CharField(widget=forms.Textarea)
     keyword = forms.CharField()
-    testNo = forms.IntegerField() 
+    testNo = forms.IntegerField()
+    teacherNo = forms.IntegerField()  
     
 class testnum(forms.Form):
-    testNo = forms.IntegerField()    
+    testNo = forms.IntegerField()
+    testname = forms.CharField()    
