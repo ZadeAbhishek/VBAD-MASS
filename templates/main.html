@@ -15,12 +15,12 @@
 <body>
     <div class="bg">
     <nav>
-    <ul><a href='./'>Home</a></ul>
-    <ul><a href='./test'>Test</a></ul>
-    <ul><a href='./result'>Result</a></ul>
+    <ul><a href='/'>Home</a></ul>
+    <ul><a href='/test'>Test</a></ul>
+    <ul><a href='/result'>Result</a></ul>
     <ul><a href='./'>Query</a></ul>
     <ul><a href='./createtest'>createtest</a></ul>
-    <ul><a href='./teacherpanel'>teacherpanel</a></ul>
+    <ul><a href='./questionpanel'>questionpanel</a></ul>
     <ul><a href='./testno'>testno</a></ul>
     </nav>
 
@@ -29,9 +29,24 @@
     <div class="instruction">
     Welcome Best of luck ! <br>
     Press start to Enter Examination</div>
-    <button herf= "./test" id="StartTest" class="cpButton" onclick="redirect(){window.location.href = "./test";}"><a href='./test'>Start</a></button>
+    <div id="StudentnameBox">
+    <label class="" for="">Student Name:</label><br>
+    <textarea id="fname"> </textarea>
+    </div>
+    <button  id="StartTest" class="cpButton" onclick="studen_name_submit()">Start</button>
     </div>
     {% endblock %}
+   
+    <script>
+        
+        function studen_name_submit(){
+           let fname = document.getElementById("fname").value;
+           string = "./testno/"+fname+""
+           window.location.href = string;
+        
+    }
+    
+      </script>
    
 </body>
 

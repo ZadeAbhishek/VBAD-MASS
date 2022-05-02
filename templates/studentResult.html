@@ -1,0 +1,23 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+<div class="panel">
+    {%  for item in studentResult %}
+     <div class="result">
+     <br>
+     <ul></ul>
+     <ul>{{item.question}}</ul>
+     <ul>{{item.TeacherAnswer}}</ul>
+     <ul>{{item.answer}}</ul>
+     <ul>{{item.tdifdSimilarity}}</ul>
+     <ul>{{item.vectorSimilarity}}</ul>
+     <ul>{{item.keywordSimilarity}}</ul>
+     <ul>{{item.GrammerSimilarity}}</ul>
+     <ul>{{item.finalResult}}</ul>
+     <br>
+     
+   {% endfor %}  
+    </div>
+</div>
+{% endblock %}

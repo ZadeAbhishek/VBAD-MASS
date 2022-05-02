@@ -4,47 +4,61 @@ from django.db import models
 from VbadApp.pyFile.model import model
 
 # Create your models here.
-class Testno(models.Model):
-    testno = models.IntegerField(default = 0)
-    TestName = models.CharField(max_length=100)
 
-class teacher(models.Model):
-     teacherNumber = models.IntegerField(default = 0) 
+class Teachers(models.Model):
      teacherName = models.CharField(max_length=100)
-     subjectName = models.CharField(max_length=100)
-     testno = models.ForeignKey(Testno,on_delete=models.CASCADE)
+     testno = models.IntegerField(default = 0)
+     TestName = models.CharField(max_length=100)
+     
 
-class question(models.Model):
+     def  __str__(self):
+         return self.teacherName
+
+
+class Students(models.Model):
+    studentName = models.CharField(max_length=500)
+
+    def  __str__(self):
+         return str(self.studentName)
+
+class Questions(models.Model):
+    Teacher = models.ForeignKey(Teachers,on_delete=models.CASCADE)
     question = models.CharField(max_length=1000)
-    answer = models.TextField()
+    Answer = models.TextField()
     keyword = models.CharField(max_length=1000)
-    testno = models.ForeignKey(Testno,on_delete=models.CASCADE)
-    teacherNumber = models.ForeignKey(teacher,on_delete=models.CASCADE)
 
-class student(models.Model):
-    studentName = models.CharField(max_length=1000)
+    def  __str__(self):
+         return self.question
 
-class result(models.Model):
-    resultid = models.AutoField
-    studentname = models.ForeignKey(student,on_delete=models.CASCADE)
-    testno = models.ForeignKey(Testno,on_delete=models.CASCADE)
-    teacherNumber = models.ForeignKey(teacher,on_delete=models.CASCADE)
+
+class Answer(models.Model):
+    studentname = models.ForeignKey(Students,on_delete=models.CASCADE)
+    question = models.ForeignKey(Questions,on_delete=models.CASCADE)
+    answer = models.TextField()
+
+    def  __str__(self):
+         return self.answer   
+
+def No_name():
+    return "No name"
+
+class StudentResult(models.Model):
+    studentname = models.ForeignKey(Students,on_delete=models.CASCADE,verbose_name="Studentname",null=True, default=No_name)
     questionNumber = models.CharField(max_length=50)
+    question = models.TextField()
+    TeacherAnswer = models.TextField()
+    answer = models.TextField()
     tdifdSimilarity = models.CharField(max_length=50)
     vectorSimilarity = models.CharField(max_length=50)
     keywordSimilarity = models.CharField(max_length=50)
     GrammerSimilarity = models.CharField(max_length=50)
     finalResult = models.CharField(max_length=10)
 
+    def  __str__(self):
+         return str(self.studentname)
 
-class studentID(models.Model):
-    studentid = models.AutoField
-    questionNumber = models.CharField(max_length=50)
-    tdifdSimilarity = models.CharField(max_length=50)
-    vectorSimilarity = models.CharField(max_length=50)
-    keywordSimilarity = models.CharField(max_length=50)
-    GrammerSimilarity = models.CharField(max_length=50)
-    finalResult = models.CharField(max_length=10)
+
+
 
 
    

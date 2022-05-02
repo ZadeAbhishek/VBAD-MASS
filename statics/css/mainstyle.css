@@ -38,6 +38,7 @@ a:visited {
     font-size: 20px;
     border-radius: 10px;
     font-weight: bold;
+    margin-top: 10px;
 }
 
 a:hover,
@@ -164,9 +165,7 @@ a:active {
     right: 6%;
 }
 
-.submit {
-    visibility: hidden;
-    position: fixed;
+.submitbtn {
     right: 10%;
     bottom: 16%;
     background-color: seagreen;
@@ -181,8 +180,20 @@ a:active {
     cursor: pointer;
 }
 
-.submit:hover {
+.submitbtn:hover {
     background-color: coral;
+}
+
+#teacherAnswer {
+    visibility: hidden;
+}
+
+#teacherKeyword {
+    visibility: hidden;
+}
+
+#questionNumber {
+    visibility: hidden;
 }
 
 .result {
@@ -223,6 +234,14 @@ a:active {
     text-align: center;
     font-size: 60px;
     padding: 20px;
+    margin-top: 50px;
+    font-weight: bolder;
+}
+
+#StudentnameBox {
+    text-align: center;
+    font-size: 25px;
+    padding: 10px;
     margin-top: 50px;
     font-weight: bolder;
 }
@@ -300,7 +319,6 @@ a:active {
     background-color: black;
     color: aliceblue;
     width: 250px;
-    height: 150px;
     right: 45%;
     position: fixed;
     top: 30%;

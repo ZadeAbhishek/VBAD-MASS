@@ -1,19 +1,12 @@
 {% extends "main.html" %}
   {% block content %}
    <div class="panel">
-    <div class="resultitle">Result</div>
     
  {%  for item in allresult %}
      <div class="result">
      <br>
-     <ul>Question  {{item.questionNumber}}</ul>
-     <ul>Tdf-df  :=> {{item.tdifdSimilarity}}</ul>
-     <ul>Vector  :=> {{item.vectorSimilarity}}</ul>
-     <ul>Keywords:=> {{item.keywordSimilarity}}</ul>
-     <ul>Grammer :=> {{item.GrammerSimilarity}}</ul>
-     <ul>Result  :=> {{item.finalResult}}</ul>
+     <a href="/studentResult/{{item.id}}">{{item.id}}.{{item.studentName}}</a>
      <br>
-     </div>
      
    {% endfor %}  
     </div>

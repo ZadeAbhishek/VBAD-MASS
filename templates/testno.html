@@ -2,15 +2,9 @@
 {% block content %}
  
 <div class="test-select">
-<form action="test">
-    <label for="cars">Choose a test:</label>
-    <select name="index" id="cars">
-      {% for item in testno %}
-      <option value="{{item.testno}}">{{item.testno}}</option>
+      Tests Available
+      {% for dets in Teacherdetails %}
+      <a href="/test/{{studname}}/{{dets.id}}">{{dets.id}}.{{dets.teacherName}} {{dets.TestName}}</a>
       {% endfor %} 
-    </select>
-    <br><br>
-    <input type="submit" value="Submit">
-  </form>
 </div>
 {% endblock %}
