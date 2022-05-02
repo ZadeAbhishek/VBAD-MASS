@@ -2,19 +2,34 @@
  {% extends "main.html" %}
   {% block content %}
    <div class="recording"><div class="recordicon"></div>Rec...</div>
-    <div class="panel">
-     <div id="questionPanel" class="question"> Questions......</div>
+   
+   
+   {% for quests in quest %} 
+     <div id="question_panel" class="">{{quest.number}}.{{quests.question}}</div>
+     <textarea class="answer" rows="300" cols="100" name="comment" form="usrform">ANSWER: </textarea>
+     <div id="teacherAnswer">{{quests.Answer}}</div>
+     <div id="teacherKeyword">{{quests.keyword}}</div>
+     <div id="questionNumber">{{quest.number}}</div>
+   {% endfor %}  
+     
+   
      <button id="queplayButton" class="playButton"></button>
      {% csrf_token %}  
-     <textarea class="answer" rows="300" cols="100" name="comment" form="usrform">ANSWER: </textarea>
      <button id="answerplayButton" class="playButton"></button>
-    </div>
-    <div class="controlpanel">
-    <button id="prevButton" class="cpButton"></button>
+    
+    
+    
+     <div class="controlpanel">
+    {%if quest.has_previous %}
+    <a href="?page={{quest.previous_page_number}}" id="prevButton" class="cpButton"></a>
+    {% endif %}
     <button id="recordButton" class="cpButton"></button>
-    <button id="nextButton" class="cpButton"></button>
+    {%if quest.has_next %}
+    <a href="?page={{quest.next_page_number}}" id="nextButton" class="cpButton"> </a>
+    {% endif %}
     </div>
-    <div class="submit">
+    
+    <div class="submitbtn">
     Submit
     </div>
 

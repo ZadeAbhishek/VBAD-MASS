@@ -1,0 +1,10 @@
+{% extends "main.html" %}
+{% block content %}
+ 
+<div class="test-select">
+      Tests Available
+      {% for dets in Teacherdetails %}
+      <a href="/test/{{studname}}/{{dets.id}}">{{dets.id}}.{{dets.teacherName}} {{dets.TestName}}</a>
+      {% endfor %} 
+</div>
+{% endblock %}

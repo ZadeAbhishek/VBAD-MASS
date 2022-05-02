@@ -38,6 +38,7 @@ a:visited {
     font-size: 20px;
     border-radius: 10px;
     font-weight: bold;
+    margin-top: 10px;
 }
 
 a:hover,
@@ -164,9 +165,7 @@ a:active {
     right: 6%;
 }
 
-.submit {
-    visibility: hidden;
-    position: fixed;
+.submitbtn {
     right: 10%;
     bottom: 16%;
     background-color: seagreen;
@@ -181,8 +180,20 @@ a:active {
     cursor: pointer;
 }
 
-.submit:hover {
+.submitbtn:hover {
     background-color: coral;
+}
+
+#teacherAnswer {
+    visibility: hidden;
+}
+
+#teacherKeyword {
+    visibility: hidden;
+}
+
+#questionNumber {
+    visibility: hidden;
 }
 
 .result {
@@ -227,6 +238,14 @@ a:active {
     font-weight: bolder;
 }
 
+#StudentnameBox {
+    text-align: center;
+    font-size: 25px;
+    padding: 10px;
+    margin-top: 50px;
+    font-weight: bolder;
+}
+
 #prevButton {
     background-image: url(../icons/chevron-left-solid.svg);
 }
@@ -267,4 +286,43 @@ a:active {
     50% {
         opacity: 0;
     }
+}
+
+.teacher-question-form {
+    align-items: center;
+    background-color: black;
+    color: aliceblue;
+    text-align: center;
+    padding: 20px;
+}
+
+.form-group {
+    padding: 20px;
+}
+
+.testno {
+    width: 500px;
+    height: 200px;
+    background-color: aquamarine;
+    border-color: black;
+    margin: 2px;
+    border: 2px;
+    text-align: center;
+}
+
+.numtest {
+    text-align: center;
+    padding: 10px;
+}
+
+.test-select {
+    background-color: black;
+    color: aliceblue;
+    width: 250px;
+    right: 45%;
+    position: fixed;
+    top: 30%;
+    font-weight: bolder;
+    padding: 20px;
+    font-size: 30px;
 }
