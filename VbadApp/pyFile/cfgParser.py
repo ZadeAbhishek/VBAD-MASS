@@ -47,7 +47,7 @@ def checkGrammer(studentAnswer):
         # print(word_tokens)
         parser = GingerIt()
         #print('Sentence lenght {}'.format(len(refineDocument[sentence])))
-        cG = parser.parse(refineDocument[sentence])
+        cG = GingerIt().parse(refineDocument[sentence])
         ginger_corrections = cG['corrections']
         #print('correctionlenght{}'.format(len(ginger_corrections)))
         #print(cG["result"])

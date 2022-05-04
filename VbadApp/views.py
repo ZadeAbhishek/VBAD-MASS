@@ -131,11 +131,45 @@ def testno(request,msg):
 def studentResult(request,id):
     # StudentRestDetail = StudentResult.objects.get(studentname=id)
     # studname = str(msg)
+    vectorSimilarity = 0
+    tdfidfSimilarity = 0.0
+    KeywordFound = 0.0
+    GrammerCheck = 0
+
     Student = Students.objects.get(id=id).id
     studentName = Students.objects.filter(studentName = id)
     StudentRestDetail = StudentResult.objects.filter(studentname = Student).values()
-    print(StudentRestDetail)
-    
+    for sr in StudentRestDetail:
+        #print("tdifdSimilarity:",sr['tdifdSimilarity'])
+        tdfidfSimilarity = tdfidfSimilarity + int(sr['tdifdSimilarity'])
+        #print("tdifdSimilarity:",tdfidfSimilarity)
+        #print("vectorSimilarity:",sr['vectorSimilarity'])
+        vectorSimilarity = vectorSimilarity + float(sr['vectorSimilarity'])
+        #print("vectorSimilarity:",vectorSimilarity)
+        #print("keywordSimilarity:",sr['keywordSimilarity'])
+        KeywordFound = KeywordFound + float(sr['keywordSimilarity'])
+        #print("keywordSimilarity:",KeywordFound)
+        #print("GrammerSimilarity",sr['GrammerSimilarity'])
+        GrammerCheck = GrammerCheck + int(sr['GrammerSimilarity'])
+        #print("GrammerSimilarity",GrammerCheck)
+
+
+        tdfidfSimilarity = int(tdfidfSimilarity)
+        vectorSimilarity= int(vectorSimilarity)
+        KeywordFound = int(KeywordFound)
+        GrammerCheck = int(GrammerCheck)
+
+        tdfidfSimilarity = int(20 * (tdfidfSimilarity/100))
+        vectorSimilarity = int(30 * (vectorSimilarity/100))
+        KeywordFound = int(30 * (KeywordFound/100))
+        GrammerCheck = int(20 * (GrammerCheck/100))
+  
+        total = tdfidfSimilarity + vectorSimilarity + KeywordFound + GrammerCheck
+    print("tdifdSimilarity:",tdfidfSimilarity)
+    print("vectorSimilarity:",vectorSimilarity)
+    print("keywordSimilarity:",KeywordFound)
+    print("GrammerSimilarity",GrammerCheck)
+    print("total",total)      
     return render(request,'studentResult.html',{'studentResult':StudentRestDetail}) 
 
 

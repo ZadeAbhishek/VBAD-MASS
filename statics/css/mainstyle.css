@@ -1,3 +1,158 @@
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: 'Comfortaa', cursive;
+}
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+    margin: 0;
+}
+
+.exam-portal {
+    display: flex;
+}
+
+.dashboard {
+    width: 300px;
+    height: 100vh;
+    background-color: #273d7e;
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 192px;
+}
+
+.dashboard a {
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    margin: 10px;
+    letter-spacing: 2px;
+    font-size: 20px;
+}
+
+.other {
+    position: relative;
+}
+
+.stud-info {
+    width: 350px;
+    height: 75px;
+    border: 2px solid black;
+    position: absolute;
+    top: 5px;
+    left: 10px;
+}
+
+.photo {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    width: 150px;
+    height: 150px;
+    border: 2px solid black;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo img {
+    width: 256px;
+    height: 183px;
+}
+
+.name {
+    font-size: 20px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+
+.rollno {
+    font-size: 20px;
+    position: absolute;
+    left: 10px;
+    top: 46px;
+}
+
+.containers {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 24%;
+}
+
+.container1 {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container2 {
+    display: flex;
+    margin-top: 373px;
+}
+
+.boxes {
+    width: 350px;
+    height: 200px;
+    border: 2px solid black;
+    margin-left: 20px;
+    position: relative;
+}
+
+.boxes h1 {
+    position: absolute;
+    left: 10px;
+    font-size: 20px;
+}
+
+.paper-name {
+    position: absolute;
+    top: 10px;
+}
+
+.paper-code {
+    position: absolute;
+    top: 40px;
+}
+
+.time {
+    position: absolute;
+    top: 70px;
+}
+
+.marks {
+    position: absolute;
+    top: 100px;
+}
+
+.start {
+    width: 350px;
+    height: 41px;
+    background-color: #273d7e;
+    margin: 10px;
+    color: white;
+    font-family: 'Comfortaa', cursive;
+    letter-spacing: 2px;
+    margin-left: 19px;
+    margin-top: 10px;
+    border: none;
+    text-transform: uppercase;
+}
+
 body,
 html {
     font-family: Arial, Helvetica, sans-serif;
@@ -11,7 +166,7 @@ h1 {
 
 .bg {
     /* The image used */
-    background-image: url("../img/26275.jpg");
+    background-image: url("../img/drew-beamer-kUHfMW8awpE-unsplash.jpg");
     /* Full height */
     height: 100%;
     /* Center and scale the image nicely */
@@ -25,26 +180,6 @@ nav {
     display: flex;
     background-color: coral;
     color: white;
-}
-
-a:link,
-a:visited {
-    background-color: coral;
-    color: white;
-    padding: 14px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 20px;
-    border-radius: 10px;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-a:hover,
-a:active {
-    background-color: blanchedalmond;
-    color: black;
 }
 
 .panel {
@@ -90,23 +225,19 @@ a:active {
 }
 
 .cpButton {
-    background-repeat: no-repeat;
-    /** disable repeating */
-    background-position: center;
-    background-color: white;
-    /* Green */
+    top: 50%;
+    right: 50%;
+    width: 350px;
+    height: 41px;
+    background-color: #273d7e;
+    margin: 10px;
+    color: white;
+    font-family: 'Comfortaa', cursive;
+    letter-spacing: 2px;
+    margin-left: 19px;
+    margin-top: 10px;
     border: none;
-    color: black;
-    padding: 10px;
-    display: inline-block;
-    font-size: 50px;
-    margin: 2px 40px;
-    cursor: pointer;
-    border-radius: 60%;
-    width: 85px;
-    height: 85px;
-    background-size: 40px 40px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-transform: uppercase;
 }
 
 .cpButton:hover {
