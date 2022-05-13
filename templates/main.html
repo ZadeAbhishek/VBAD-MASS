@@ -8,33 +8,49 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>VBADAE-GP2</title>
     <link rel="stylesheet" href="{% static 'css/mainstyle.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Segoe+UI&display=swap" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/a73d299641.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
     <script src="{% static 'src/main.js' %}"></script>
+    <script type="module" src="{% static 'src/html2canvas.min.js' %}"></script>
+    <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
 </head>
 
 <body>
     <div class="bg">
-    <nav>
-    <ul><a href='/'>Home</a></ul>
-    <ul><a href='/test'>Test</a></ul>
-    <ul><a href='/result'>Result</a></ul>
-    <ul><a href='./'>Query</a></ul>
-    <ul><a href='./createtest'>createtest</a></ul>
-    <ul><a href='./questionpanel'>questionpanel</a></ul>
-    <ul><a href='./testno'>testno</a></ul>
-    </nav>
+         
+            <div class="exam-portal">
+            <div class="dashboard">
+                <div class="links">
+                    <a href="/">Home</a>
+                    <a href="/result">Result</a>
+                    <a href="/notice">Notice</a>
+                    <a href="/greivence">Grievance</a>
+                </div>
+                
+    
+            </div>
+    
+ {% block content %}
 
-    {% block content %}
-    <div class="panel">
-    <div class="instruction">
-    Welcome Best of luck ! <br>
-    Press start to Enter Examination</div>
-    <div id="StudentnameBox">
-    <label class="" for="">Student Name:</label><br>
-    <textarea id="fname"> </textarea>
-    </div>
-    <button  id="StartTest" class="cpButton" onclick="studen_name_submit()">Start</button>
-    </div>
+    <section class='login' id='login'>
+        <div class="container_login">
+          <h1 style="text-align: center; margin-top: -10px; margin-bottom: 20px;">SAVITRIBAI PHULE PUNE UNIVERSITY
+            EXAM FOR BLIND AND HANDICAPPED STUDENTS</h1>
+        </div>
+        <div class='head'>
+        <h1 class='company' id="login1">Login</h1>
+        </div>
+        <div class='form'>
+        <input type="text" placeholder='Enter Name' class='text' id="fname" required><br>
+        
+        <button class="cpButton" onclick="studen_name_submit()">Select Exam</button>
+        </div>
+      </section>
     {% endblock %}
    
     <script>

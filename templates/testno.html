@@ -1,10 +1,21 @@
 {% extends "main.html" %}
 {% block content %}
- 
-<div class="test-select">
-      Tests Available
-      {% for dets in Teacherdetails %}
-      <a href="/test/{{studname}}/{{dets.id}}">{{dets.id}}.{{dets.teacherName}} {{dets.TestName}}</a>
-      {% endfor %} 
+<div class="other">
+      <div class="stud-info">
+          <h1 class="name">Name : {{studname}}</h1>
+      </div>
+      <div class="containers">
+            <div class="container1">
+                  {% for dets in Teacherdetails %}
+                <div class="exam-info">
+                    <div class="boxes">
+                        <h1 class="paper-code">Paper Code : {{dets.id}}</h1>
+                        <h1 class="paper-name">Paper Name : {{dets.TestName}}</h1>
+                        <h1 class="time">Teacher Name : {{dets.teacherName}}</h1>
+                        <h1 class="marks">Marks : 100</h1>
+                    </div>
+                    <a href="/test/{{studname}}/{{dets.id}}"><button class="start">Start Exam</button></a>
+                </div>
+                {% endfor %} 
 </div>
 {% endblock %}

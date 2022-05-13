@@ -53,12 +53,17 @@ class StudentResult(models.Model):
     keywordSimilarity = models.CharField(max_length=50)
     GrammerSimilarity = models.CharField(max_length=50)
     finalResult = models.CharField(max_length=10)
+    total = models.CharField(max_length=50)
 
     def  __str__(self):
          return str(self.studentname)
 
+class notice(models.Model):
+    topic = models.CharField(max_length=50)
+    notice = models.TextField()
 
 
-
+    def  __str__(self):
+         return str(self.topic)
 
    
