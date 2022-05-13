@@ -13,4 +13,6 @@ urlpatterns = [
     path("testno/<str:msg>",views.testno, name='testno'),
     path("createtest",views.createTest, name='createTest'),
     path("studentResult/<int:id>",views.studentResult,name='studentResult'),
+    path("notice",views.notices, name='notice'),
+    path("greivence",views.greivence, name='greivence'),
 ]

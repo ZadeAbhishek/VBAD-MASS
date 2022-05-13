@@ -1,23 +1,59 @@
 {% extends "main.html" %}
 
 {% block content %}
+<style>
+  .piechart {
+      margin-top: 300px;
+      display: block;
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background-image: conic-gradient(
+          pink 70deg, 
+          lightblue 0 235deg, 
+          orange 25deg,
+          red 50deg);
+  
+        }
 
-<div class="panel">
-    {%  for item in studentResult %}
-     <div class="result">
-     <br>
-     <ul></ul>
-     <ul>{{item.question}}</ul>
-     <ul>{{item.TeacherAnswer}}</ul>
-     <ul>{{item.answer}}</ul>
-     <ul>{{item.tdifdSimilarity}}</ul>
-     <ul>{{item.vectorSimilarity}}</ul>
-     <ul>{{item.keywordSimilarity}}</ul>
-     <ul>{{item.GrammerSimilarity}}</ul>
-     <ul>{{item.finalResult}}</ul>
-     <br>
-     
-   {% endfor %}  
+</style>
+
+     <div class="w3-container dtb">
+      <table  border="2px" >
+        
+          <thead>
+            <tr>
+              <th>Name: {{Studentname}}</th>
+            </tr>
+           <tr>
+              <th>Sr No.</th>
+              <th>Question</th>
+              <th>Answer</th>
+              <th>Marks</th>
+              <th>Outof</th>
+            </tr>
+          </thead>
+          <tbody>
+            {%  for item in studentResult %}
+            <tr>
+                <td>{{item.questionNumber}}</td>
+                <td>{{item.question}}</td>
+                <td>{{item.answer}}</td>
+                <td>{{item.total}}</td>
+                <td>100</td>
+              </tr>
+              {% endfor %} 
+              <td>Total</td>
+              <td></td>
+              <td></td>
+                <td>{{totals}}</td>
+                <td>100</td>
+            </tbody>
+      </table>
     </div>
+
 </div>
+<!--<button id="DownloadResult">Download</button> -->
+
 {% endblock %}

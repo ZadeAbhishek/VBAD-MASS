@@ -6,7 +6,7 @@ from django.http import QueryDict
 # from django.http.response import HttpResponse
 from django.shortcuts import render
 
-from VbadApp.models import StudentResult,Teachers,Questions,Students,Teachers,Answer
+from VbadApp.models import StudentResult,Teachers,Questions,Students,Teachers,Answer,notice
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .pyFile.init import checkinit 
@@ -67,15 +67,17 @@ def index(request,id,msg):
     page_num=request.GET.get('page',1)
     questions = paginator.page(page_num)
     similarAnswer, similarit, keyWordtest, GrammerScore, finalresult = checkinit(str(answer),str(teacherAnswer),str(teacherKeyword))
+    GrantTotal = (int(20 * (similarAnswer/100)) + int(30 * (similarit/100)) + int(20 * (keyWordtest/100)) + int(30 * (GrammerScore/100)))
+    print("Grantotal",GrantTotal)
     # studname = Students(studentName=str(NameStudent))
     # studentinstance = Students()
     # studentinstance.studentName = msg
-    result = StudentResult(TeacherAnswer=str(teacherAnswer),question=str(question),answer=str(answer),studentname=Students.objects.get(studentName=msg),questionNumber=str(questionNumber),tdifdSimilarity =str(similarAnswer),vectorSimilarity = str(similarit),keywordSimilarity=str(keyWordtest),GrammerSimilarity = str(GrammerScore),finalResult=finalresult)
+    result = StudentResult(TeacherAnswer=str(teacherAnswer),question=str(question),answer=str(answer),studentname=Students.objects.get(studentName=msg),questionNumber=str(questionNumber),tdifdSimilarity =str(similarAnswer),vectorSimilarity = str(similarit),keywordSimilarity=str(keyWordtest),GrammerSimilarity = str(GrammerScore),finalResult=finalresult,total=GrantTotal)
     data = {}
     if is_ajax(request=request):
         result.save()
         # return JsonResponse(data)
-    return render(request,'index.html',{'quest':questions})
+    return render(request,'index.html',{'quest':questions,'id':id,"name":msg})
 
 # def about(request):
 #     return HttpResponse("This is about")
@@ -135,10 +137,10 @@ def studentResult(request,id):
     tdfidfSimilarity = 0.0
     KeywordFound = 0.0
     GrammerCheck = 0
-
     Student = Students.objects.get(id=id).id
-    studentName = Students.objects.filter(studentName = id)
     StudentRestDetail = StudentResult.objects.filter(studentname = Student).values()
+    Studentname = Students.objects.get(id=id)
+    print(Studentname)
     for sr in StudentRestDetail:
         #print("tdifdSimilarity:",sr['tdifdSimilarity'])
         tdfidfSimilarity = tdfidfSimilarity + int(sr['tdifdSimilarity'])
@@ -168,9 +170,8 @@ def studentResult(request,id):
     print("tdifdSimilarity:",tdfidfSimilarity)
     print("vectorSimilarity:",vectorSimilarity)
     print("keywordSimilarity:",KeywordFound)
-    print("GrammerSimilarity",GrammerCheck)
-    print("total",total)      
-    return render(request,'studentResult.html',{'studentResult':StudentRestDetail}) 
+    print("GrammerSimilarity",GrammerCheck)     
+    return render(request,'studentResult.html',{'studentResult':StudentRestDetail,'totals':total,'Studentname':Studentname}) 
 
 
 def createTest(request):
@@ -183,4 +184,9 @@ def createTest(request):
     return render(request,'createtest.html',{'testform': testform})
 
 
-   
+def notices(request):
+    noti = notice.objects.all().order_by('id')
+    return render(request,'notice.html',{'notices':noti})
+
+def greivence(request):
+    return render(request,'greivence.html')

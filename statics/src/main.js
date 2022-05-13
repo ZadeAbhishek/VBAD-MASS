@@ -327,6 +327,9 @@ window.onload = function() {
     // //     window.location.href = "./test";
     // // })
 
+
+
+
     var submit = document.getElementsByClassName('submitbtn')[0];
     var texts = document.getElementsByClassName('answer')[0];
     var start = false;
@@ -338,6 +341,8 @@ window.onload = function() {
     let question = document.getElementById("question_panel").innerHTML;
     let teacherAnswer = document.getElementById("teacherAnswer").innerHTML;
     let teacherKeyword = document.getElementById("teacherKeyword").innerHTML;
+
+
 
 
 
@@ -432,40 +437,50 @@ window.onload = function() {
         if (e.results[0].isFinal) {
             copytext = '' + copytext + '' + text
             if (text.includes("stop recording")) {
-                stopRec();
+                removeString = ["stop", "recording"];
+                copytext = removeWords(copytext, removeString);
+                Click("recordButton")
+
             }
             if (text.includes("submit and next question")) {
-                increment();
-                recognition.start();
+                removeString = ["submit", "next", "question"];
+                copytext = removeWords(copytext, removeString);
+                console.log(copytext)
+                Click("submit")
+                Click("nextButton")
+
+
             }
             if (text.includes("next question")) {
-                increment();
-                recognition.start();
+                removeString = ["next", "question"];
+                copytext = removeWords(copytext, removeString);
+                console.log(copytext)
+                Click("submit")
+                Click("nextButton")
             }
             if (text.includes("previous question")) {
-                decrementer()
-                recognition.start();
-                start = false;
-                recognition.stop();
-                increment();
-            }
-            if (text.includes("next question")) {
-                start = false;
-                recognition.stop();
-                increment();
-            }
-            if (text.includes("previous question")) {
-                start = false;
-                recognition.stop();
-                decrementer()
+                removeString = ["submit", "previous", "question"];
+                copytext = removeWords(copytext, removeString);
+                console.log(copytext)
+                Click("submit")
+                Click("prevButton")
             }
             if (text.includes("repeat question")) {
-                // console.log(question[index])
-                speak(question[index])
+                removeString = ["repeat", "question"];
+                copytext = removeWords(copytext, removeString);
+                speak(question)
             }
             if (text.includes("speak answer")) {
+                removeString = ["speak", "answer"];
+                copytext = removeWords(copytext, removeString);
                 //console.log(question[index])
-                speak(answer[index])
+                speak(copytext)
+            }
+            if (text.includes("answer")) {
+                removeString = ["answer"];
+                copytext = removeWords(copytext, removeString);
+                //console.log(question[index])
+                speak(copytext)
             }
 
         }
@@ -474,6 +489,23 @@ window.onload = function() {
         texts.innerText = copytext;
         // answer[index] = copytext
     });
+    let queplayButton = document.getElementById("queplayButton").onclick = function() {
+        speak(question)
+    }
+    let answerplayButton = document.getElementById("answerplayButton").onclick = function() {
+        speak(copytext)
+    }
+
+    const removeWords = (str, arr) => {
+        return arr.reduce((acc, val) => {
+            const regex = new RegExp(` ${val}`, "g");
+            return acc.replace(regex, '');
+        }, str);
+    };
+
+    function Click(id) {
+        document.getElementById(id).click();
+    }
 
     recognition.addEventListener("end", () => {
         if (start) {
@@ -508,5 +540,8 @@ window.onload = function() {
         })
     })
     initStart()
+
+
+
 
 }

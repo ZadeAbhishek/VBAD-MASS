@@ -1,36 +1,73 @@
 
  {% extends "main.html" %}
   {% block content %}
-   <div class="recording"><div class="recordicon"></div>Rec...</div>
    
-   
-   {% for quests in quest %} 
+   <div class="other_index">
+    <div class="stud-info_index">
+        <h1 class="name">Name: {{name}}</h1>
+        <h1 class="rollno">Test No: {{id}}</h1>
+    </div>
+    <div class="recording"><div class="recordicon"></div></div>
+   {% for quests in quest %}
+   <div class="dtbh"> 
      <div id="question_panel" class="">{{quest.number}}.{{quests.question}}</div>
-     <textarea class="answer" rows="300" cols="100" name="comment" form="usrform">ANSWER: </textarea>
+     <label for="Question" >Question No:</label><br>
+     <input type="text" name="question" value="{{quest.number}}.{{quests.question}}" readonly>
+     <br>
+      <br>
+      <br>
+      <label for="Answer">Answer:</label><br>
+     <textarea name="answer" class="answer" rows="15" cols="50" form="usrform"></textarea>
+     <br>
+     <br>
+     <div class="Toolpanel">
+     <div>  
+     {%if quest.has_previous %} 
+      <a  href="?page={{quest.previous_page_number}}"><button id="prevButton"></button></a>
+     {% endif %}
+     </div>
+     <div>
+     <button id="recordButton"></button>
+     </div>
+     <div>
+     {%if quest.has_next %}
+     <a href="?page={{quest.next_page_number}}"><button id="nextButton"></button></a>
+     {% endif %}
+     </div>
+     
+     </div>
+     
+     <button id="submit" type="submit" name="SUBMIT" class="submitbtn">SUBMIT</button>
      <div id="teacherAnswer">{{quests.Answer}}</div>
      <div id="teacherKeyword">{{quests.keyword}}</div>
      <div id="questionNumber">{{quest.number}}</div>
-   {% endfor %}  
-     
-   
      <button id="queplayButton" class="playButton"></button>
      {% csrf_token %}  
      <button id="answerplayButton" class="playButton"></button>
-    
-    
-    
-     <div class="controlpanel">
-    {%if quest.has_previous %}
-    <a href="?page={{quest.previous_page_number}}" id="prevButton" class="cpButton"></a>
-    {% endif %}
-    <button id="recordButton" class="cpButton"></button>
-    {%if quest.has_next %}
-    <a href="?page={{quest.next_page_number}}" id="nextButton" class="cpButton"> </a>
-    {% endif %}
+
     </div>
+   {% endfor %}  
+     
+
+   
+   
+      
+      
+      
+      
+     
+
+ 
+
+
+   
+     
     
-    <div class="submitbtn">
-    Submit
-    </div>
+    
+    
+
+    
+    
+    
 
    {% endblock %}

@@ -1,15 +1,18 @@
 {% extends "main.html" %}
   {% block content %}
-   <div class="panel">
-    
- {%  for item in allresult %}
-     <div class="result">
-     <br>
-     <a href="/studentResult/{{item.id}}">{{item.id}}.{{item.studentName}}</a>
-     <br>
-     
-   {% endfor %}  
-    </div>
-    
-
-   {% endblock %}
+  <div class="Notice_Heading">Result</div>
+     <div class="containers">
+     <div class="container1_result">
+        {%  for item in allresult %}
+          <div class="exam-info">
+              <div class="boxes_result">
+                  <h1 class="paper-name">{{item.studentName}}</h1>
+                  <h1 class="paper-code">{{item.id}}</h1>
+                </div>
+                <a href="/studentResult/{{item.id}}"><button class="start">Show Details</button></a>
+              </div>
+            
+            {% endfor %} 
+          </div>
+          </div>
+     {% endblock %}

@@ -1,0 +1,16 @@
+{% extends "main.html" %}
+
+{% block content %}
+<div class="Notice_Heading">Notice</div>
+<div class="Notice_containers">
+       {% for notice in notices%}
+       
+        <div class="Notice">
+            <h3> {{notice.topic}}</h3>
+            <h6> {{notice.notice}}</h6>
+          </div>
+            <br>
+       
+       {% endfor%}
+    </div> 
+{% endblock %}
